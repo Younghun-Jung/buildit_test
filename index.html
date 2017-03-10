@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/test.js"></script>
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>age</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        var nStart = new Date().getTime();
+
+        // logic start
+        var tbody = $('tbody');
+        var trHtml = '';
+        var length = objs.length;
+
+        for(var i=0; i<length; i++){
+            var nameTag = "<td class='name'>" + objs[i].name + "</td>";
+            var ageTag = "<td class='age'>" + objs[i].age + "</td>";
+            trHtml += "<tr>" + nameTag + ageTag + "</tr>";
+        }
+        tbody.html(trHtml);
+        // logic end
+
+        var nEnd = new Date().getTime();
+
+        // 시간 측정
+        console.log(nEnd - nStart + "ms");
+
+        // 나이클릭 --> 이름 bold
+        var listener = function(event) {
+            var tmp = $(event.currentTarget).siblings('.name');
+            tmp.css('font-weight', 'bold');
+        }
+        tbody.on('click', '.age', listener);
+    </script>
+</body>
+</html>
